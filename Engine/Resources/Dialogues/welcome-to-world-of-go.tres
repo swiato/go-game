@@ -1,0 +1,120 @@
+[gd_resource type="Resource" script_class="DialogueNode" load_steps=14 format=3 uid="uid://doyh52rjgt0hx"]
+
+[ext_resource type="Script" uid="uid://c43duwgudob6k" path="res://Scenes/Dialogue/DialogueNode.cs" id="1_vkxlo"]
+
+[sub_resource type="Resource" id="Resource_bthxw"]
+script = ExtResource("1_vkxlo")
+Name = "???"
+Text = "Witamy we wspaniałej grze w GO!"
+Children = null
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_3xyxg"]
+script = ExtResource("1_vkxlo")
+Name = "???"
+Text = "Jeśli jesteś tego pewien..."
+Children = Array[Object]([SubResource("Resource_bthxw")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_u1eeg"]
+script = ExtResource("1_vkxlo")
+Name = "Player"
+Text = "Pewnie!"
+Children = Array[Object]([SubResource("Resource_3xyxg")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_gn201"]
+script = ExtResource("1_vkxlo")
+Name = "???"
+Text = "To po co głowę zawracasz ?!"
+Children = null
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_k7hqb"]
+script = ExtResource("1_vkxlo")
+Name = "???"
+Text = "Jeśli nie jesteś gotowy na cierpienie..."
+Children = Array[Object]([SubResource("Resource_gn201")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_bjyhk"]
+script = ExtResource("1_vkxlo")
+Name = "Player"
+Text = "Na... cierpienie?!"
+Children = Array[Object]([SubResource("Resource_k7hqb")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_byuqb"]
+script = ExtResource("1_vkxlo")
+Name = "Player"
+Text = "Nie bardzo..."
+Children = Array[Object]([SubResource("Resource_gn201")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_wbq7r"]
+script = ExtResource("1_vkxlo")
+Name = "???"
+Text = "Jesteś gotowy na cierpienie?"
+Children = Array[Object]([SubResource("Resource_u1eeg"), SubResource("Resource_bjyhk"), SubResource("Resource_byuqb")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_1hb6p"]
+script = ExtResource("1_vkxlo")
+Name = "Player"
+Text = "Jestem!"
+Children = Array[Object]([SubResource("Resource_wbq7r")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_2vqpg"]
+script = ExtResource("1_vkxlo")
+Name = "???"
+Text = "Jeśli nie wiesz co to ból..."
+Children = Array[Object]([SubResource("Resource_gn201")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_ny0e7"]
+script = ExtResource("1_vkxlo")
+Name = "Player"
+Text = "Na... ból?!"
+Children = Array[Object]([SubResource("Resource_2vqpg")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_vkxlo"]
+script = ExtResource("1_vkxlo")
+Name = "???"
+Text = "Jesteś gotowy na ból?"
+Children = Array[Object]([SubResource("Resource_1hb6p"), SubResource("Resource_ny0e7"), SubResource("Resource_byuqb")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[resource]
+script = ExtResource("1_vkxlo")
+Name = "???"
+Text = "Witaj!"
+Children = Array[Object]([SubResource("Resource_vkxlo")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"

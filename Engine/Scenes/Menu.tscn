@@ -1,0 +1,112 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2lgcemdatfow"]
+
+[ext_resource type="Script" uid="uid://dx1oyt3ll85vb" path="res://Scripts/Menu.cs" id="1_3kf3n"]
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("_gridSize", "_gameType", "_blackPlayer", "_whitePlayer", "_start")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3kf3n")
+_gridSize = NodePath("MarginContainer/VBoxContainer/GridSize/SpinBox")
+_gameType = NodePath("MarginContainer/VBoxContainer/GameType/Options")
+_blackPlayer = NodePath("MarginContainer/VBoxContainer/BlackPlayer/Options")
+_whitePlayer = NodePath("MarginContainer/VBoxContainer/WhitePlayer/Options")
+_start = NodePath("MarginContainer/VBoxContainer/Start")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 10
+
+[node name="GridSize" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Grid Size"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/GridSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 2.0
+max_value = 19.0
+value = 9.0
+rounded = true
+
+[node name="GameType" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GameType"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game Type"
+
+[node name="Options" type="OptionButton" parent="MarginContainer/VBoxContainer/GameType"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+popup/item_0/text = "AtariGo"
+popup/item_0/id = 0
+popup/item_1/text = "Go"
+popup/item_1/id = 1
+
+[node name="BlackPlayer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BlackPlayer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Black Player"
+
+[node name="Options" type="OptionButton" parent="MarginContainer/VBoxContainer/BlackPlayer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+popup/item_0/text = "Player"
+popup/item_0/id = 0
+popup/item_1/text = "Computer"
+popup/item_1/id = 1
+
+[node name="WhitePlayer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/WhitePlayer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "White Player"
+
+[node name="Options" type="OptionButton" parent="MarginContainer/VBoxContainer/WhitePlayer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+popup/item_0/text = "Player"
+popup/item_0/id = 0
+popup/item_1/text = "Computer"
+popup/item_1/id = 1
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Start Game"

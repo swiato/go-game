@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cugu6bqjjbiq2"]
+
+[ext_resource type="PackedScene" uid="uid://b2lgcemdatfow" path="res://Scenes/Menu.tscn" id="1_idj7w"]
+[ext_resource type="Script" uid="uid://odqprtyia0xl" path="res://Scripts/Main.cs" id="1_kln2b"]
+[ext_resource type="PackedScene" uid="uid://dd8534vybn1r1" path="res://Scenes/Game.tscn" id="1_r150o"]
+[ext_resource type="Resource" uid="uid://doyh52rjgt0hx" path="res://Resources/Dialogues/welcome-to-world-of-go.tres" id="2_pbw6q"]
+[ext_resource type="Script" uid="uid://cmm0roqtgxfnx" path="res://Scenes/Dialogue/DialogueCommand.cs" id="2_rgh2o"]
+
+[sub_resource type="Resource" id="Resource_pbw6q"]
+script = ExtResource("2_rgh2o")
+_dialogue = ExtResource("2_pbw6q")
+metadata/_custom_type_script = "uid://cmm0roqtgxfnx"
+
+[node name="Main" type="Control" node_paths=PackedStringArray("_game", "_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kln2b")
+_game = NodePath("Game")
+_menu = NodePath("Menu")
+_commands = Array[Object]([SubResource("Resource_pbw6q")])
+
+[node name="Menu" parent="." instance=ExtResource("1_idj7w")]
+layout_mode = 1
+
+[node name="Game" parent="." instance=ExtResource("1_r150o")]
+visible = false
+layout_mode = 1

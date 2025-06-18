@@ -1,0 +1,232 @@
+[gd_scene load_steps=22 format=3 uid="uid://dxgud3mq0puuj"]
+
+[ext_resource type="Script" uid="uid://bj1hmev08jqt2" path="res://Scenes/Dialogue/DialogueManager.cs" id="1_yr65w"]
+[ext_resource type="Script" uid="uid://d2ybd2iouet71" path="res://Scenes/Dialogue/StateMachine.cs" id="3_5o74p"]
+[ext_resource type="AudioStream" uid="uid://dty5t024fhiim" path="res://Assets/Dialogue/Sounds/A1.ogg" id="3_i1cyo"]
+[ext_resource type="Script" uid="uid://bbsqchyjrdaal" path="res://Scenes/Dialogue/HiddenState.cs" id="3_lyokk"]
+[ext_resource type="AudioStream" uid="uid://bfad1ej0awacy" path="res://Assets/Dialogue/Sounds/A2.ogg" id="4_edsia"]
+[ext_resource type="AudioStream" uid="uid://c34yro6qyyb3s" path="res://Assets/Dialogue/Sounds/A3.ogg" id="5_fbjoq"]
+[ext_resource type="Script" uid="uid://cv12h5jg4tvuj" path="res://Scenes/Dialogue/ShowDialogueState.cs" id="5_pxs3j"]
+[ext_resource type="AudioStream" uid="uid://mp0pw3lfehxf" path="res://Assets/Dialogue/Sounds/A4.ogg" id="6_2d3x0"]
+[ext_resource type="Script" uid="uid://sc8fkci7l510" path="res://Scenes/Dialogue/PrintTextState.cs" id="6_i1cyo"]
+[ext_resource type="PackedScene" uid="uid://7kjbjlxgc8fk" path="res://Scenes/Dialogue/ChoiceButton.tscn" id="7_edsia"]
+[ext_resource type="Script" uid="uid://dxyyv41s7e84o" path="res://Scenes/Dialogue/WaitForInputState.cs" id="11_46358"]
+[ext_resource type="Script" uid="uid://d0pixxphupoo1" path="res://Scenes/Dialogue/ShowOptionsState.cs" id="12_k8ek6"]
+[ext_resource type="Script" uid="uid://dbs1x45v530wh" path="res://Scenes/Dialogue/HideDialogueState.cs" id="13_8kaol"]
+[ext_resource type="Script" uid="uid://p70wust3vysv" path="res://Scenes/Dialogue/NextDialogueState.cs" id="15_h7t8j"]
+
+[sub_resource type="Animation" id="Animation_lw36g"]
+resource_name = "DialogueFadeIn"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/DialogBox/Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i1cyo"]
+resource_name = "DialogueFadeOut"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/DialogBox/Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_edsia"]
+resource_name = "NextPulse"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/DialogBox/MarginContainer/VBoxContainer/Next:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lyokk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/DialogBox/MarginContainer/VBoxContainer/Next:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/DialogBox/Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5o74p"]
+_data = {
+&"DialogueFadeIn": SubResource("Animation_lw36g"),
+&"DialogueFadeOut": SubResource("Animation_i1cyo"),
+&"NextPulse": SubResource("Animation_edsia"),
+&"RESET": SubResource("Animation_lyokk")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_4p6ui"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_ro8un"]
+font_size = 56
+
+[node name="DialogueManager" type="Control" node_paths=PackedStringArray("NameLabel", "TextLabel", "AnimationPlayer", "StateMachine")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yr65w")
+NameLabel = NodePath("VBoxContainer/DialogBox/MarginContainer/VBoxContainer/Name")
+TextLabel = NodePath("VBoxContainer/DialogBox/MarginContainer/VBoxContainer/Text")
+AnimationPlayer = NodePath("AnimationPlayer")
+StateMachine = NodePath("StateMachine")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_currentState")]
+script = ExtResource("3_5o74p")
+_currentState = NodePath("HiddenState")
+
+[node name="HiddenState" type="Node" parent="StateMachine"]
+script = ExtResource("3_lyokk")
+
+[node name="ShowDialogueState" type="Node" parent="StateMachine"]
+script = ExtResource("5_pxs3j")
+
+[node name="PrintTextState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_audioStreamPlayer", "TypingTimer")]
+script = ExtResource("6_i1cyo")
+_typingSounds = Array[AudioStream]([ExtResource("3_i1cyo"), ExtResource("4_edsia"), ExtResource("5_fbjoq"), ExtResource("6_2d3x0")])
+_audioStreamPlayer = NodePath("AudioStreamPlayer")
+TypingTimer = NodePath("TypingTimer")
+
+[node name="TypingTimer" type="Timer" parent="StateMachine/PrintTextState"]
+wait_time = 0.05
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StateMachine/PrintTextState"]
+
+[node name="NextDialogueState" type="Node" parent="StateMachine"]
+script = ExtResource("15_h7t8j")
+
+[node name="ShowOptionsState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_choices")]
+script = ExtResource("12_k8ek6")
+_choices = NodePath("../../VBoxContainer/Choices")
+_choiceButton = ExtResource("7_edsia")
+
+[node name="WaitForInputState" type="Node" parent="StateMachine" node_paths=PackedStringArray("_nextLabel")]
+script = ExtResource("11_46358")
+_nextLabel = NodePath("../../VBoxContainer/DialogBox/MarginContainer/VBoxContainer/Next")
+
+[node name="HideDialogueState" type="Node" parent="StateMachine"]
+script = ExtResource("13_8kaol")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5o74p")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Choices" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="DialogBox" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 1
+
+[node name="Background" type="ColorRect" parent="VBoxContainer/DialogBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 1
+color = Color(0, 0, 0, 0.705882)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/DialogBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DialogBox/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Name" type="Label" parent="VBoxContainer/DialogBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Name"
+label_settings = SubResource("LabelSettings_4p6ui")
+vertical_alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/DialogBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 56
+text = "Text"
+
+[node name="Next" type="Label" parent="VBoxContainer/DialogBox/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 1
+text = ">>"
+label_settings = SubResource("LabelSettings_ro8un")

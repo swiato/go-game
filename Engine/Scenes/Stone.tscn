@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c20g5ka6f38p4"]
+
+[ext_resource type="Script" uid="uid://bafsr76v4op3n" path="res://Scripts/Stone.cs" id="1_m3q8e"]
+
+[node name="Stone" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+script = ExtResource("1_m3q8e")
+StoneSize = 22.0
+_lineWidth = 1.0
+_antialiased = true

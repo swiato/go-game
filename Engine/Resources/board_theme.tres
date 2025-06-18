@@ -1,0 +1,5 @@
+[gd_resource type="Theme" format=3 uid="uid://d06he4xi1ws6j"]
+
+[resource]
+default_base_scale = 0.64
+default_font_size = 56

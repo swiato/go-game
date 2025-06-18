@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://8pb658fbssqw"]
+
+[ext_resource type="Script" uid="uid://dx5oxfoxkm37r" path="res://Scripts/Grid.cs" id="1_uadnl"]
+
+[sub_resource type="FontFile" id="FontFile_5bwvu"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+
+[node name="Grid" type="Control"]
+custom_minimum_size = Vector2(1080, 1080)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -540.0
+offset_right = 540.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uadnl")
+GridSize = 9
+_antialiased = true
+_font = SubResource("FontFile_5bwvu")
+_coordinatePlacement = 15

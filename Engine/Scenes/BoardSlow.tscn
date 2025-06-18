@@ -1,0 +1,176 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkqoofwkww3tn"]
+
+[ext_resource type="Script" uid="uid://bh2lxhlawup88" path="res://Scripts/BoardSlow.cs" id="1_ak07r"]
+[ext_resource type="Resource" uid="uid://cu7f7wh4o0f5k" path="res://Resources/grid_settings.tres" id="2_4tpf7"]
+[ext_resource type="Texture2D" uid="uid://64l4nx30n7sv" path="res://Assets/Board/Textures/Wood.jpeg" id="3_7sr81"]
+[ext_resource type="PackedScene" uid="uid://c20g5ka6f38p4" path="res://Scenes/Stone.tscn" id="4_dclmm"]
+[ext_resource type="Script" uid="uid://dpbg5g1fjp5m4" path="res://Scripts/GridSlow.cs" id="5_ak07r"]
+[ext_resource type="LabelSettings" uid="uid://rctl4dauv6q6" path="res://Resources/coordinates_label.tres" id="5_ktpn3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktpn3"]
+bg_color = Color(0, 0, 0, 0)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.648438, 0.511444, 0.313564, 1)
+shadow_size = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4tpf7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktpn3"]
+
+[node name="BoardSlow" type="Control" node_paths=PackedStringArray("_playArea", "_grid", "_stones", "_leftCoords", "_rightCoords", "_topCoords", "_bottomCoords")]
+custom_minimum_size = Vector2(1080, 1080)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -540.0
+offset_right = 540.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+script = ExtResource("1_ak07r")
+_gridSettings = ExtResource("2_4tpf7")
+_labelSettings = ExtResource("5_ktpn3")
+_playArea = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/AspectRatioContainer/PlayArea")
+_grid = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/AspectRatioContainer/PlayArea/GridSlow")
+_stones = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/AspectRatioContainer/PlayArea/Stones")
+_stoneScene = ExtResource("4_dclmm")
+_leftCoords = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LeftCoords")
+_rightCoords = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/RightCoords")
+_topCoords = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/TopCoords")
+_bottomCoords = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/BottomCoords")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktpn3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("3_7sr81")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftCoords" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4tpf7")
+text = "19
+18
+17
+16
+15
+14
+13
+12
+11
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1"
+label_settings = ExtResource("5_ktpn3")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopCoords" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ktpn3")
+text = "A B C D E F G H J K L M N O P Q R S T"
+label_settings = ExtResource("5_ktpn3")
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayArea" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+
+[node name="GridSlow" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/AspectRatioContainer/PlayArea"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("5_ak07r")
+_gridSettings = ExtResource("2_4tpf7")
+
+[node name="Stones" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/AspectRatioContainer/PlayArea"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BottomCoords" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ktpn3")
+text = "A B C D E F G H J K L M N O P Q R S T"
+label_settings = ExtResource("5_ktpn3")
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="RightCoords" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4tpf7")
+text = "19
+18
+17
+16
+15
+14
+13
+12
+11
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1"
+label_settings = ExtResource("5_ktpn3")
+horizontal_alignment = 1
+vertical_alignment = 3

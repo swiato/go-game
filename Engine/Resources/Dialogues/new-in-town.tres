@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="DialogueNode" load_steps=14 format=3 uid="uid://cw6sd1o1ytg1y"]
+
+[ext_resource type="Script" uid="uid://c43duwgudob6k" path="res://Scenes/Dialogue/DialogueNode.cs" id="1_1kstx"]
+[ext_resource type="Script" uid="uid://r08yl5iuhwwb" path="res://Scenes/Dialogue/PrintCommand.cs" id="2_lby20"]
+
+[sub_resource type="Resource" id="Resource_t6wjh"]
+script = ExtResource("1_1kstx")
+Name = "Resident"
+Text = "You liar! There ain't no Mr. Bowler, I made him up!"
+Children = null
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_lmtts"]
+script = ExtResource("1_1kstx")
+Name = "Player"
+Text = "Mr. Bowler is a good friend of mine!"
+Children = Array[Object]([SubResource("Resource_t6wjh")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_0320h"]
+script = ExtResource("1_1kstx")
+Name = "Resident"
+Text = "Don't you worry about it. Say, do you have something to eat? I'm starving."
+Children = null
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_wx4ml"]
+script = ExtResource("1_1kstx")
+Name = "Player"
+Text = "Who?"
+Children = Array[Object]([SubResource("Resource_0320h")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_q2emn"]
+script = ExtResource("1_1kstx")
+Name = "Resident"
+Text = "Oh really? Then you must know Mr. Bowler."
+Children = Array[Object]([SubResource("Resource_lmtts"), SubResource("Resource_wx4ml")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_1kstx"]
+script = ExtResource("1_1kstx")
+Name = "Player"
+Text = "I've lived here all my life!"
+Children = Array[Object]([SubResource("Resource_q2emn")])
+EnterActions = Array[Object]([])
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_fm24g"]
+script = ExtResource("1_1kstx")
+Name = "Player"
+Text = "I haven't heard about any trouble."
+Children = Array[Object]([SubResource("Resource_0320h")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_bqita"]
+script = ExtResource("1_1kstx")
+Name = "Player"
+Text = "Did I say Newton? I'm actually from Springville."
+Children = Array[Object]([SubResource("Resource_q2emn")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_meh8i"]
+script = ExtResource("1_1kstx")
+Name = "Resident"
+Text = "Newton, eh? I heard there's trouble brewing down there."
+Children = Array[Object]([SubResource("Resource_fm24g"), SubResource("Resource_bqita")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_lby20"]
+script = ExtResource("1_1kstx")
+Name = "Player"
+Text = "I came here from Newton."
+Children = Array[Object]([SubResource("Resource_meh8i")])
+EnterActions = null
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
+
+[sub_resource type="Resource" id="Resource_2g8dk"]
+script = ExtResource("2_lby20")
+metadata/_custom_type_script = "uid://r08yl5iuhwwb"
+
+[resource]
+script = ExtResource("1_1kstx")
+Name = "Resident"
+Text = "You don't look like you're from around here."
+Children = Array[Object]([SubResource("Resource_1kstx"), SubResource("Resource_lby20")])
+EnterActions = Array[Object]([SubResource("Resource_2g8dk")])
+ExitActions = null
+metadata/_custom_type_script = "uid://c43duwgudob6k"
